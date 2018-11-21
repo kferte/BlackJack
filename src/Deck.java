@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Deck {
 
@@ -16,13 +17,42 @@ public class Deck {
         }
     }
 
+    public void shuffle(){
+        ArrayList<Card> tempDeck = new ArrayList<Card>();
+        Random random = new Random();
+        int randomCardIndex = 0;
+        final int originalSize = this.cards.size();
+        for(int i = 0; i < originalSize; i++){
+            randomCardIndex = random.nextInt(this.cards.size());
+            tempDeck.add(this.cards.get(randomCardIndex));
+            this.cards.remove(randomCardIndex);
+        }
+
+        this.cards = tempDeck;
+    }
+
     public String toString(){
         String cardListOutput = "";
-        int i = 0;
         for(Card card : this.cards){
-            cardListOutput += "\n" + i + " " + card.toString();
-            i++;
+            cardListOutput += "\n" + " " + card.toString();
         }
         return cardListOutput;
+    }
+
+    public void removeCard(final int i){
+        this.cards.remove(i);
+    }
+
+    public Card getCard(final int i){
+        return this.cards.get(i);
+    }
+
+    public void addCard(Card card){
+        this.cards.add(card);
+    }
+
+    public void draw(Deck comingFrom){
+        this.cards.add(comingFrom.getCard(0));
+        comingFrom.removeCard(0);
     }
 }
