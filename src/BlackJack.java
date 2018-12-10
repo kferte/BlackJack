@@ -40,7 +40,7 @@ public class BlackJack {
 
                 System.out.println("Dealer hand: " + dealerDeck.getCard(0).toString() + " [Hidden]");
 
-                System.out.println("Would you like to hit or stand?");
+                System.out.println("Would you like to (1)hit or (2)stand?");
                 int response = userInput.nextInt();
                 if(response == 1){
                     playerDeck.draw(playingDeck);
@@ -90,5 +90,6 @@ public class BlackJack {
         }
 
         System.out.println("Game over!");
+        userInput.close();
     }
 }

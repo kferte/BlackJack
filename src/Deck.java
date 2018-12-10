@@ -66,7 +66,7 @@ public class Deck {
             moveTo.addCard(this.getCard(i));
         }
         for (int i = 0; i < thisDeckSize; i++){
-            this.removeCard(i);
+            this.removeCard(0);
         }
     }
 
